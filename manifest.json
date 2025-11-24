@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Darija Translator Sidebar",
+  "version": "1.0",
+  "description": "Translate English to Darija using your API",
+  "permissions": ["sidePanel", "scripting", "activeTab"],
+  "host_permissions": ["http://localhost:3000/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "side_panel.html"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_title": "Open Translator"
+  }
+}
