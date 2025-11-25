@@ -1,29 +1,47 @@
 {
   "manifest_version": 3,
-  "name": "Darija Translator Sidebar",
-  "version": "1.0",
-  "description": "Translate English to Darija using your API",
-  "permissions": ["sidePanel", "scripting", "activeTab"],
-  "host_permissions": ["http://localhost:3000/*", "<all_urls>"],
+  "name": "Polyglot AI Assistant",
+  "version": "1.1.0",
+  "description": "AI assistant for translation, rewriting, and content help with popup and side panel.",
+  "permissions": ["storage", "activeTab", "scripting", "sidePanel", "identity"],
+  "host_permissions": [
+    "https://translator-resource-server.vercel.app/*",
+    "http://localhost:3000/*",
+    "<all_urls>"
+  ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background/index.js",
+    "type": "module"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["contentScript.js"],
+      "js": ["content/selectionListener.js"],
       "run_at": "document_idle"
     }
   ],
+  "action": {
+    "default_title": "Open Translator",
+    "default_popup": "ui/popup.html"
+  },
   "side_panel": {
-    "default_path": "side_panel.html"
+    "default_path": "ui/sidepanel.html"
+  },
+  "options_page": "ui/options.html",
+  "oauth2": {
+    "client_id": "622427034276-kqbgku481gr3bd0i2v26adjo7i2m0a4j.apps.googleusercontent.com",
+    "scopes": ["openid", "email", "profile"]
   },
   "icons": {
     "16": "icon.png",
+    "32": "icon.png",
     "48": "icon.png",
     "128": "icon.png"
   },
-  "action": {
-    "default_title": "Open Translator"
-  }
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*", "icon.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }

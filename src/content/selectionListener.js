@@ -1,14 +1,17 @@
-// Detect highlighted text on any page and broadcast it to the extension.
+const MESSAGE_TYPES = {
+  SELECTION_CHANGED: "SELECTION_CHANGED",
+};
+
 (() => {
   let lastSent = "";
   let debounceId;
 
   const sendSelection = (text) => {
     if (!chrome?.runtime?.sendMessage) return;
-    chrome.runtime.sendMessage({ type: "SELECTION_CHANGED", text }, () => {
-      // Ignore "receiving end does not exist" errors when the panel is closed.
-      void chrome.runtime.lastError;
-    });
+    chrome.runtime.sendMessage(
+      { type: MESSAGE_TYPES.SELECTION_CHANGED, text },
+      () => void chrome.runtime.lastError
+    );
   };
 
   const handleSelectionChange = () => {
