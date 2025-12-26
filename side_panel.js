@@ -1,6 +1,9 @@
 import { renderApp } from "./components.js";
 
 const API_BASE = "http://localhost:3000/api/v1/translate";
+// const API_BASE = "https://translator-server-sigma.vercel.app/api/v1/translate";
+
+
 const TEXT_ENDPOINT = API_BASE;
 const IMAGE_ENDPOINT = `${API_BASE}/image`;
 
@@ -136,6 +139,53 @@ const handleTextTranslate = async (overrideText) => {
     setLoading("text", false);
   }
 };
+
+// const handleTextTranslate = async (overrideText) => {
+//   const text = (overrideText || els.textInput?.value || "").trim();
+//   if (!text) {
+//     if (els.resultText) els.resultText.textContent = "Please enter text to translate.";
+//     return;
+//   }
+
+//   setLoading("text", true);
+//   if (els.resultText) els.resultText.textContent = "Translating...";
+
+//   try {
+//     const res = await fetch(TEXT_ENDPOINT, {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({ 
+//         text,
+//         targetLanguage: "Darija"
+//       }),
+//     });
+
+//     if (!res.ok) {
+//       const message = `API error (${res.status})`;
+//       if (els.resultText) els.resultText.textContent = message;
+//       setStatus("API error", false);
+//       console.error(message, await res.text());
+//       return;
+//     }
+
+//     const data = await res.json();
+//     const translated = data?.translation || data?.error || "No translation returned.";
+
+//     if (els.resultText) els.resultText.textContent = translated;
+//     setStatus("Translated", true);
+
+//     if (overrideText && els.textInput) {
+//       els.textInput.value = overrideText;
+//       setCharCount();
+//     }
+//   } catch (err) {
+//     if (els.resultText) els.resultText.textContent = "Failed to connect to the API.";
+//     setStatus("Offline?", false);
+//     console.error("Request error:", err);
+//   } finally {
+//     setLoading("text", false);
+//   }
+// };
 
 const setImagePreview = (dataUrl) => {
   state.imageBase64 = dataUrl || "";
