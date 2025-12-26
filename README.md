@@ -9,11 +9,15 @@ The extension follows Chrome Manifest V3 architecture with the following compone
 - **Side Panel**: Main user interface with tabs for text and image translation
 - **API Communication**: Connects to a local Node.js server for AI-powered translations
 
-![Architecture](../translator-server/translator-extension-architecture.png)
+![Architecture](translator-extension-architecture.png)
 
 ## Overview
 
 The Darija Translator Extension is a Chrome browser extension that provides seamless translation of English text and images into Moroccan Darija (Arabic dialect). It features a side panel interface that allows users to translate selected text from any webpage or upload images for text extraction and translation.
+
+## Project Video
+
+[Watch the project video](https://drive.google.com/file/d/1OZnQ3UYgl2G5jwJ7fC5yqPUbYrYeyLaG/view?usp=drive_link)
 
 ## Features
 
@@ -24,17 +28,6 @@ The Darija Translator Extension is a Chrome browser extension that provides seam
 - **Copy to Clipboard**: Easy copying of translated results
 - **Auto-fill Toggle**: Option to enable/disable automatic text selection filling
 - **Debounced Input**: Optimized performance with debounced text selection detection
-
-## Architecture
-
-The extension follows Chrome Manifest V3 architecture with the following components:
-
-- **Background Script**: Manages extension lifecycle and message routing between content scripts and side panel
-- **Content Script**: Injected into web pages to detect text selection events
-- **Side Panel**: Main user interface with tabs for text and image translation
-- **API Communication**: Connects to a local Node.js server for AI-powered translations
-
-![Architecture](../translator-server/translator-extension-architecture.png)
 
 ## Installation
 
